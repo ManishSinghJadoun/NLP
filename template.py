@@ -1,47 +1,51 @@
 import os
-from pathlib import path
+from pathlib import Path
 import logging
 
 
-logging.basicConfig(level=logging.INFO,format= '[%(ascitime)s]: %(message)s:')
-project_name = 'textsummarizer'
+logging.basicConfig(level=logging.INFO,format='[%(asctime)s]: %(message)s:')
+
+project_name = "textSummarizer"
+
 list_of_files = [
-".github/workflow/.gitkeep",
-f"src/{project_name}/_init_.py",
-f"src/{project_name}/component/_init_.py",
-f"src/{project_name}/utility/_init_.py",
-f"src/{project_name}/utility/common.py",
-f"src/{project_name}/logging/_init_.py",
-f"src/{project_name}/config/_init_.py",
-f"src/{project_name}/config/configuration.py",
-f"src/{project_name}/pipelline/_init_.py",
-f"src/{project_name}/entity/_init_.py",
-f"src/{project_name}/constant/_init_.py",
-"config/config.yaml",
-"params.yaml",
-"app.py",
-"main.py",
-"Dockerfile",
-"requirements.txt",
-"setup.py",
-"research/trails.ipynb"
+  ".github/workflows/.gitkeep",
+  f"src/{project_name}/__init__.py",
+  f"src/{project_name}/component/__init__.py",
+  f"src/{project_name}/utility/__init__.py",
+  f"src/{project_name}/utility/common.py",
+  f"src/{project_name}/logging/__init__.py",
+  f"src/{project_name}/config/__init__.py",
+  f"src/{project_name}/config/configuration.py",
+  f"src/{project_name}/pipelline/__init__.py",
+  f"src/{project_name}/entity/__init__.py",
+  f"src/{project_name}/constant/__init__.py",
+  "config/config.yaml",
+  "params.yaml",
+  "app.py",
+  "main.py",
+  " Dockerfile",
+  "requirements.txt",
+  "setup.py",
+  "research/trails.ipynb"
+
 ]
 for filepath in list_of_files:
-  filepath = path(filepath)
+  filepath = Path(filepath)
   filedir, filename = os.path.split(filepath)
 
-if filedir != "":
-  os.makedirs(filedir, exit_ok=True)
-  logging.info(f"creating directory:{filedir} for the file {filename}")
+  if filedir != "":
+    os.makedirs(filedir, exist_ok=True)
+    logging.info(f"creating directory:{filedir} for the file {filename}")
+
     
- if (not os.path.exists(filepath)) or (os.path.getsize(filepath) == 0):
+  if (not os.path.exists(filepath)) or (os.path.getsize(filepath) == 0):
     with open(filepath, 'w') as f:
-    pass 
+     pass 
     logging.info(f"creating empty file: {filepath}")
   
 
-else:
-  logging.info(f"{filename} is already there")
+  else:
+   logging.info(f"{filename} is already there")
 
 
 
